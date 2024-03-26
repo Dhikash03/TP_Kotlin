@@ -1,27 +1,72 @@
+import java.time.LocalDate
+
+
 class Employe {
 
-    var Matricule : String = ""
-    var Nom : String = ""
-    var Prenom : String = ""
+    var matricule : Int = 0
+    var nom : String = ""
+    var prenom : String = ""
     var anneeEmbauche : Int = 0
-    var salaire : Double = 0.0
+    var Salaire : Double = 0.0
 
-    constructor(Matricule: String, Nom: String, Prenom: String, anneeEmbauche: Int, salaire: Double) {
-        this.Matricule = Matricule
-        this.Nom = Nom
-        this.Prenom = Prenom
+    constructor(matricule : Int, nom: String , prenom: String, anneeEmbauche: Int, salaire: Double) {
+        this.matricule = matricule
+        this.nom = nom
+        this.prenom = prenom
         this.anneeEmbauche = anneeEmbauche
-        this.salaire = salaire
+        this.Salaire = salaire
     }
 
     constructor()
 
-    override fun toString(): String {
-        return "Employe(Matricule='$Matricule', Nom='$Nom', Prenom='$Prenom', anneeEmbauche=$anneeEmbauche, salaire=$salaire)"
+
+
+    fun anciennete() : Int {
+
+        var annee_anciennete = LocalDate.now().year - anneeEmbauche
+
+        return annee_anciennete
     }
 
-    
+    fun augmentationSalaire() : Double{
+
+        var augmentationSal = this.Salaire
+
+        if (anciennete()<5) {
+
+            augmentationSal *= 1.02
+        }
+        else if (anciennete()<10 ){
+            augmentationSal *= 1.05
+        }
+
+        else {
+            augmentationSal*= 1.10
+        }
+
+        return augmentationSal
+
+    }
+
+    override fun toString(): String {
+        return "Matricule : ['$matricule']" +
+                " Nom complet : ['$nom, $prenom']" +
+                " Ancienneté : [${anciennete()}]" +
+                " Salaire : [$Salaire]"
+    }
 
 
 
-}
+
+
+    }
+
+
+
+
+
+
+
+
+
+

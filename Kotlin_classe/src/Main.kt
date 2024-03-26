@@ -24,11 +24,16 @@
 
 /*fun main(){
 
-    var pers = Personne("Mario", 1.80,85 )
+    var lesPersonne = mutableListOf<Personne>()
+    lesPersonne.add(Personne("Paul", 1.90,90) )
+    lesPersonne.add(Personne("Polo", 1.70,50))
+    lesPersonne.add(Personne("Alice", 1.90,90))
 
-    println(pers)
-    println(pers.IMC())
-    println(pers.Signification())
+
+    for ( unePersonne in lesPersonne){
+        println("${unePersonne.Nom} a un imc de ${unePersonne.IMC()}")
+
+    }
 }*/
 
 /*fun main() {
@@ -54,6 +59,28 @@
 }*/
 
 fun main(){
-    var emploie = Employe()
+    println("Le nom de matricule est :")
+    var matricule = readln().toInt()
+
+    println(" Entrer votre prénom :")
+    var prenom = readln().toString()
+
+    println(" Entrer votre nom :")
+    var nom = readln().toString()
+
+    println(" Votre annee d'embauche :")
+    var annee_embauche = readln().toInt()
+
+    println(" Entrer votre salaire :")
+    var salaire = readln().toDouble()
+
+    var employe = Employe(matricule, prenom, nom, annee_embauche, salaire)
+
+
+    println(employe.anciennete())
+    print(employe.augmentationSalaire())
+    print(employe)
+
+
 }
 
